@@ -1,12 +1,12 @@
 /**
- *
  * Java1. Home Work 5
  * class Emploee
+ *
  * @author Aleksandr Konditerov
  * @version date 05.12.2017
  * @link https://github.com/konditerovAa
- *
  */
+
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -22,58 +22,17 @@ public class Employee {
     private int age;
     private int salary;
 
-    Employee(){
-        this.surname = "Konditerov";
-        this.name = "Aleksandr";
-        this.middle = "Andreevich";
-        this.age = 26;
-        this.email = "konditerov.a.a@gmail.com";
-        this.phone = "+79032748021";
-        this.salary = 109750;
-        this.position = "chief specialist";
-    }
+    Employee() {
+        System.out.print("set surname: ");
+        this.surname = sc.next();
 
-    public void setName(String name) {
-        this.name = name;
-    }
+        System.out.print("set name: ");
+        this.name = sc.next();
 
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
+        System.out.print("set middlename: ");
+        this.middle = sc.next();
 
-    public void setMiddle(String middle) {
-        this.middle = middle;
-    }
-
-    public void setEmail() {
-        while (true){
-            System.out.print("enter email: ");
-            email = sc.nextLine();
-            if(Pattern.matches("\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*\\.\\w{2,4}", email)){
-                this.email = email;
-                break;
-            }
-        }
-    }
-
-    public void setPhone() {
-        while (true){
-            System.out.print("enter phone(8(XXX)XXXXXXX | +7(XXX)XXXXXXX): ");
-            String setPhone = sc.next();
-            if(Pattern.matches("(.+7|8)?(.()?(\\d{3})(.))?(\\d{7})" , setPhone)) {
-                this.phone = setPhone;
-                break;
-            }
-        }
-    }
-
-    public void setPosition() {
-        System.out.print("set position: ");
-        this.position = sc.next();
-    }
-
-    public void setAge() {
-        while (true){
+        while (true) {
             System.out.print("set age: ");
             this.age = sc.nextInt();
             /**
@@ -85,16 +44,42 @@ public class Employee {
              * @link www.nat-geo.ru/fact/35786-rekord-dolgozhitelstva/
              *
              */
-            if (age >= 14 && age <= 122){
+            if (age >= 14 && age <= 122) {
                 this.age = age;
                 break;
             }
         }
-    }
 
-    public void setSalary() {
+        while (true) {
+            System.out.print("enter phone(8(XXX)XXXXXXX | +7(XXX)XXXXXXX): ");
+            String setPhone = sc.next();
+            if (Pattern.matches("(.+7|8)([.(]{0,1}?)(\\d{3})([.)]{0,1}?)(\\d{7})", setPhone)) {
+                this.phone = setPhone;
+                break;
+            }
+        }
+
+        while (true) {
+            System.out.print("enter email: ");
+            email = sc.nextLine();
+            if (Pattern.matches("\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*\\.\\w{2,4}", email)) {
+                this.email = email;
+                break;
+            }
+        }
+
+        System.out.print("set position: ");
+        this.position = sc.nextLine();
+
         System.out.print("set salary: ");
         this.salary = sc.nextInt();
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public String toString(){
+        return "surname : " + surname + " name: " + name + " middlename: " + middle + " age: " + age + " email: " + email + " phone: " + phone + " position: " + position + " salary: " + salary;
+    }
 }
