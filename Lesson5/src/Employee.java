@@ -32,9 +32,7 @@ public class Employee {
         System.out.print("set middlename: ");
         this.middle = sc.next();
 
-        while (true) {
-            System.out.print("set age: ");
-            this.age = sc.nextInt();
+        do {
             /**
              *
              * Минимальный возраст для заключения трудового договора – 14 лет.
@@ -44,29 +42,19 @@ public class Employee {
              * @link www.nat-geo.ru/fact/35786-rekord-dolgozhitelstva/
              *
              */
-            if (age >= 14 && age <= 122) {
-                this.age = age;
-                break;
-            }
-        }
+            System.out.print("set age: ");
+            this.age = sc.nextInt();
+        } while (!(age >= 14 && age <= 122));
 
-        while (true) {
+        do {
             System.out.print("enter phone(8(XXX)XXXXXXX | +7(XXX)XXXXXXX): ");
-            String setPhone = sc.next();
-            if (Pattern.matches("(.+7|8)([.(]{0,1}?)(\\d{3})([.)]{0,1}?)(\\d{7})", setPhone)) {
-                this.phone = setPhone;
-                break;
-            }
-        }
+            this.phone = sc.next();
+        } while (!Pattern.matches("(.+7|8)([.(]{0,1}?)(\\d{3})([.)]{0,1}?)(\\d{7})", phone));
 
-        while (true) {
+        do {
             System.out.print("enter email: ");
-            email = sc.nextLine();
-            if (Pattern.matches("\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*\\.\\w{2,4}", email)) {
-                this.email = email;
-                break;
-            }
-        }
+            this.email = sc.next();
+        } while (!Pattern.matches("\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*\\.\\w{2,4}", email));
 
         System.out.print("set position: ");
         this.position = sc.nextLine();
@@ -79,7 +67,7 @@ public class Employee {
         return age;
     }
 
-    public String toString(){
+    public String toString() {
         return "surname : " + surname + " name: " + name + " middlename: " + middle + " age: " + age + " email: " + email + " phone: " + phone + " position: " + position + " salary: " + salary;
     }
 }
